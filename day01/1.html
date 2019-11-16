@@ -1,0 +1,42 @@
+<script>
+  const a = 10;
+  const add10 = a => a + 10;
+  const r = add10(a);
+</script>
+
+# 일급 함수
+ - 함수를 값으로 다룰 수 있다 : 변수에 함수를 값으로 담을 수 있다.
+ - 조합성과 추상화의 도구
+
+<script>
+  const add5 = a => a + 5;
+  console.log(add5)
+  console.log(add5(5)) 
+  // 평가해서 결과로 만들어서 값을 다른 함수에게 전달할 수 있다.
+
+  // 함수의 결과값으로 함수가 사용될 수 있다
+  const f1 = () => () => 1;
+
+  // f1은 실행됐을 때 다시 함수를 리턴할 수 있다.
+  console.log(f1())  // 이 함수의 결과는 함수
+
+  const f2 = f1();   // 함수는 다른 변수에 담을 수 있다.
+  console.log(f2);   // () => 1
+  console.log(f2()); // 1
+  // 이렇게 함수를 내가 원하는 시점에 평가해서 결과를 만들수 있다.
+
+
+  const apply1 = f => f(1);  // 함수를 받아서 실행하는 함수
+  console.log('이게뭐야', apply1) 
+
+  const apply3 = function(f) {
+    return f(1);
+  }
+  console.log('??', apply3)
+
+  const apply4 = function(f) {
+    return g(1);
+  }
+
+  console.log('f가 뭐임', apply4);
+</script>
